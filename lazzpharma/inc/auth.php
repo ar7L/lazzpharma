@@ -35,7 +35,8 @@
   		print_r($this->staff_info);
   	}
   	public function authorize(){
-  		$info = getBy("staff","WHERE staff_email = '$this->staff_email' AND staff_password = '$this->staff_password' ");
+  		// $info = getBy("staff","WHERE staff_email = '$this->staff_email' AND staff_password = '$this->staff_password' ")[0];
+  		$info = getBy1("staff","WHERE staff_email = '$this->staff_email' AND staff_password = '$this->staff_password' ");
   		if(!empty($info)){
   			foreach($info as $k => $v){
   			   $_SESSION[$k] = $v;

@@ -89,7 +89,6 @@
             echo $col_names."<br>";
             echo $con_val."<br>";
       }
-
     }
     function my_delete($conn , $table , $id_d , $redirect){
       $arr = columns($table);
@@ -151,10 +150,28 @@
     $re = mysqli_query($conn, $qu);
     return $out = mysqli_fetch_assoc($re);
   }
-  function getBy($table , $query){
+  function getBy1($table , $query){
     global $conn;
     $qu = "SELECT * FROM $table ".$query;
     $re = mysqli_query($conn, $qu);
     return $out = mysqli_fetch_assoc($re);
+  }
+  function getBy($table , $query){
+    global $conn;
+    $qu = "SELECT * FROM $table ".$query;
+    $re = mysqli_query($conn, $qu);
+    $out = array();
+    while($row = mysqli_fetch_assoc($re)){
+        array_push($out, $row);
+    }
+    return $out;
+  }
+  function deleteBy($table , $query, $redirect = ""){
+    global $conn;
+    $qu = "DELETE FROM $table ".$query;
+    $re = mysqli_query($conn, $qu);
+    if($redirect != ""){
+        header("Location: ".$redirect);
+    }
   }
  ?>

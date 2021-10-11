@@ -108,6 +108,7 @@ header nav .logo{
 }
 .hidden-form{
   display: none;
+  transition: 600ms ease-in-out;
 }
 .hidden-form.active{
   display: block;

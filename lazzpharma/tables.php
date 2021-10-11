@@ -236,6 +236,7 @@
 			 $.post('myFile.php', {
 			    data: List
 			  }, function(response) {
+			  	// console.log(response);
 			    List = [];
 			    document.querySelectorAll(".cart-list")[0].innerHTML = "";
 			    // console.log(response);

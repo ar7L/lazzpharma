@@ -22,8 +22,9 @@ if(isset($_POST)){
     	array_push($send , $value['id'], $order_id, $order_name ,$order_quantity, $order_price,$total,$date,$recipt);
     	print_r($send);
 		$id = $value['id'];
-		$product_quantity = getBy("products","WHERE product_id = '$id' ")['product_quantity'];
+		$product_quantity = getBy("products","WHERE product_id = '$id' ")[0]['product_quantity'];
 		$product_quantity -= $order_quantity;
+		print_r($product_quantity);
 		if($product_quantity >= 0){
 		   $arr = compact('product_quantity');
 		   myInsert("order_list",$send);
